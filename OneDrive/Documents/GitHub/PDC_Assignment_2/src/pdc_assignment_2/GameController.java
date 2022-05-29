@@ -33,11 +33,12 @@ public class GameController implements ActionListener {
             case "Login":
                 String username = this.view.userNameField.getText();
                 String password = this.view.passwordField.getText();
-                this.model.checkName(username, password);
-                view.mainMenuScreen();
+
+   
+                    this.model.checkName(username, password);
                 
-
-
+                view.mainMenuScreen();
+                                 
 
 //fix this when get home 
                 break;
