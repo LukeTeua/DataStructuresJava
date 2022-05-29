@@ -19,9 +19,7 @@ public GameData(){
   db.dbsetup();
 
 }
-
-
-    //counter
+    
     int multiPoints = 0;
     int statPoints = 0;
     
