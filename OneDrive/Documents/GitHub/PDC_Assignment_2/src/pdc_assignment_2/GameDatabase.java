@@ -40,8 +40,6 @@ public class GameDatabase {
         }
     }
 
-
-
     public GameData checkName(String username, String password){
         GameData data = new GameData();
         Player player = new Player();    
