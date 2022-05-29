@@ -47,8 +47,8 @@ public class GameDatabase {
         Player player = new Player();    
 
         try{
-            Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM GameProfile " + "WHERE username = '" + username + "'");
+            Statement statement = conn.createStatement(); //SQL STATEMENT #2 SELECTING THE PROFILE IF IT EXISTS
+            ResultSet rs = statement.executeQuery("SELECT username,password FROM GameProfile " + "WHERE username = '" + username + "'");
             if(rs.next()){
                 String pass = rs.getString("password");
                 System.out.println("***" + pass);
@@ -62,7 +62,7 @@ public class GameDatabase {
 
                     data.loginFlag = false;
                 }
-            } else {
+            } else { //SQL STATEMENT #3 - Adding new account to DB.
                 System.out.println("User created and added to DB");
                 statement.executeUpdate("INSERT INTO GameProfile " + "VALUES('" + username + "', '" + password + "', 1, 1, 1)");
                 data.loginFlag = true;
@@ -72,7 +72,7 @@ public class GameDatabase {
         }
         return data;
     }
-
+          //SQL STATEMENT #4 TO CHECK IF TABLES EXIST.
     private boolean checkTableExisting(String newTableName){
         boolean flag = false;
         try {
@@ -94,16 +94,18 @@ public class GameDatabase {
         return flag;
     }
 
+    //SQL Statement #5 to retrieve multipliers.
     public void saveDB(int hpMulti, int dmgMulti, int luckMulti, String username){
-        Statement statement;
+        Statement statement; 
+        String Query_Hp_Multiplier = "UPDATE GameProfile SET hpMulti=" +hpMulti + "WHERE username ='"  +username+"'";
+        String Query_Dmg_Multiplier = "UPDATE GameProfile SET dmgMulti=" +dmgMulti + "WHERE username ='" +username+"'";
+        String Query_Luck_Multiplier = "UPDATE GameProfile SET luckMulti=" +luckMulti + "WHERE username ='" +username+"'";
+
         try{
             statement = conn.createStatement();
-            statement.executeUpdate("UPDATE GameProfile SET hpMulti=" +hpMulti + "WHERE username ='"  +username+"'");
-            statement.executeUpdate("UPDATE GameProfile SET dmgMulti=" +dmgMulti+ "WHERE username ='"+username+"'");
-            statement.executeUpdate("UPDATE GameProfile SET luckMulti=" +luckMulti + "WHERE username ='" +username+"'");          
-                System.out.println("Update has been successful" +"hp :"+ hpMulti);
-                System.out.println("Update has been successful " + "dmg :" + dmgMulti);
-                System.out.println("Update has been successfull " +"luck :" +luckMulti);
+            statement.executeUpdate(Query_Hp_Multiplier);
+            statement.executeUpdate(Query_Dmg_Multiplier);
+            statement.executeUpdate(Query_Luck_Multiplier);          
             } catch (SQLException ex){
             System.out.println("Update not successful");
         }
