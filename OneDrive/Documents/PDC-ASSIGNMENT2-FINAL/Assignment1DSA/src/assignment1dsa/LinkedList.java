@@ -37,7 +37,9 @@ public class LinkedList<E> {
         return size;
     }
 
-    public boolean contains(E element) {
+    public boolean contains(E element) {  
+
+
 
         return true;
 
