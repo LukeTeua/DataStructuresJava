@@ -11,7 +11,8 @@ public class LinkedList<E> {
     private Node<E> head;
 
 //adds data at the end.
-    public LinkedList() {}
+    public LinkedList() {
+    }
 
 //adding a value into the linked list. 
     public void add(E element) {
@@ -36,18 +37,11 @@ public class LinkedList<E> {
         return size;
     }
 
-public boolean contains(E element){
+    public boolean contains(E element) {
 
+        return true;
 
-
-
-
-
-
-
-}
-
-
+    }
 
     public static void printLinkedList(LinkedList list) {
         Node current = list.head;
