@@ -6,26 +6,29 @@ package assignment1dsa;
  */
 public class Node<E> {
 
-    public E element;
+    public E data;
     public Node next = null;
 
+    public Node() {
+    }
+
     public Node(E element) {
-        this.element = element;
+        this.data = element;
         next = null;
     }
 
     public Node(E data, Node next) {
 
-        this.element = data;
+        this.data = data;
         next = null;
     }
 
-public Node next(Node E){
-return E;
-}
+    public Node next(Node E) {
+        return E;
+    }
 
     public E getData() {
-        return element;
+        return data;
     }
 
     public void setData(E data) {
