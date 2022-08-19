@@ -30,12 +30,16 @@ public class LinkedList<E> {
         size++;
     }
 
-    public int size() {
+    public int getSize(){
         return size;
     }
+   
 
     public void addInOrder(E data) {
-    }
+//add to this method.     
+
+
+}
 
     public boolean contains(Node node) {
         Node<E> current = head;
