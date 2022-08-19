@@ -108,23 +108,6 @@ public class LinkedList<E> {
 
     }
 
-    public static void main(String[] args) {
-
-        Node<Integer> node1 = new Node(3, null);
-        Node<Integer> node2 = new Node(3, node1);
-        Node<Integer> node3 = new Node(45, node2);
-        Node<Integer> node4 = new Node(11, node3);
-        Node<Integer> node5 = new Node(8, node4);
-        LinkedList<Integer> l = new LinkedList();
-
-        l.add(8);
-        l.add(2);
-        l.add(1234123);
-        l.contains(node5);
-        System.out.println(l.contains(node5));
-
-    }
-
     public void printLinkedList() {
         Node current = head;
         System.out.println("LinkedList:");
