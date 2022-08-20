@@ -1,5 +1,7 @@
 package assignment1dsa;
 
+import java.util.NoSuchElementException;
+
 /**
  *
  * @author Luke McLeod
@@ -9,11 +11,14 @@ public class LinkedList<E> {
 
     public int size;
     private Node<E> head;
-
+    private Node <E> tail;
 //adds data at the end.
     public LinkedList() {
+    head = null;
+    size =0;
+    tail = null;
     }
-
+    
 //adding a value into the linked list. 
     public void add(E data) {
         Node<E> newNode = new Node(data);
@@ -30,16 +35,34 @@ public class LinkedList<E> {
         size++;
     }
 
-    public int getSize(){
+    public int getSize() {
         return size;
     }
-   
 
     public void addInOrder(E data) {
-//add to this method.     
+        //add files in oder
+        Node<E> newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else if (head.compareTo(newNode) > 0) {
+            newNode.next = head;
+            head = newNode;
+        } else {
+            Node<E> current = head;
+            Node<E> temp = null;
+            while (current != null) {
+                if (current.compareTo(newNode) > 0) {
+                    break;
+                }
+                temp = current;
+                current = current.next;
+            }
+            temp.next = newNode;
+            newNode.next = current;
+        }
+        size++;
 
-
-}
+    }
 
     public boolean contains(Node node) {
         Node<E> current = head;
@@ -101,10 +124,10 @@ public class LinkedList<E> {
                 //finds 456 node. 
                 current = current.next;
             }
-
+            //collected by garbage collector. 
             if (current.next.next == null) {
                 current.next = current;
-                current.next =null;
+                current.next = null;
                 size--;
             }
 
@@ -122,4 +145,22 @@ public class LinkedList<E> {
         System.out.println("");
     }
 
-}
+        public E getNode(int n)throws NoSuchElementException{
+        Node <E> current = null;
+        
+        if(n < 0 || n >= size ){
+        throw new NoSuchElementException("index out of bounds");
+        }
+        else if (n > size/2){
+            
+          current = tail;
+          for(int i = 0 ; i < n; i++){
+          
+          
+          }
+        }
+        return current.data;
+        
+        }
+    }
+
