@@ -5,16 +5,17 @@ import java.util.NoSuchElementException;
 /**
  *
  * @author LukeTeua
+ * @param <E>
  */
-public class Queue<E> {
+public class Queue<E> extends LinkedList<E> {
 
     int size = 0;
     Node<E> head = null;
     Node<E> tail = null;
 
-    public Queue() {
-    }
+    public Queue (){}
 
+    @Override
     public int getSize() {
         return size;
     }
@@ -46,14 +47,14 @@ public class Queue<E> {
             throw new NoSuchElementException();
         }
     }
-public void printQueue(){
-Node current = new Node();
-while(current != null)
-{
-    System.out.print(" " +current.data+ " ");
-   if(current.next != null)
-     current = current.next;
-}
-}
+    public void printQueue() {
+        Node current = new Node();
+        while (current != null) {
+            System.out.print(" " + current.data + " ");
+            if (current.next != null) {
+                current = current.next;
+            }
+        }
+    }
 
 }
