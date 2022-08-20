@@ -87,7 +87,7 @@ public class LinkedListTest {
         System.out.println("Current mark: " + mark);
         System.out.println();
         
-        mark += test_add_in_order();
+        //mark += test_add_in_order();
         
         System.out.println("Current mark: " + mark);
         if(mark == 31)
