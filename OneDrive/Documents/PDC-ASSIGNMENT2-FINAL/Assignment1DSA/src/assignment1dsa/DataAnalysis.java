@@ -8,25 +8,32 @@ package assignment1dsa;
  *
  * @author GGPC
  */
-public class DataAnalysis <E> {
- 
- E[] data;
- Queue <E> queue;
- Stack <E> stack;
+public class DataAnalysis<E> {
+
+    E[] data;
+    Queue<E> queue;
+    Stack<E> stack;
 
 //take an array of type E 
-DataAnalysis(E[] data){
-
-
-stack.push((E)data);
-}
-public boolean isSymmetrical(){
-
-
-
-
-return true;
-
-}
+    DataAnalysis(E[] data) {
+        this.data = data;
+        queue = new Queue<>();
+        stack = new Stack<>();
+    for(E datas:data){
+        queue.enqueue(datas);
+        stack.push(datas);
+    }
     
+    }
+    public boolean isSymmetrical() {
+        for(int i = 0; i < data.length/2;i++)
+        {
+            if (!queue.dequeue().equals(stack.pop()))
+            {
+            return false;
+            } 
+        }
+    return true;    
+    }
+
 }
