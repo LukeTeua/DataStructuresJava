@@ -87,7 +87,7 @@ public class LinkedListTest {
         System.out.println("Current mark: " + mark);
         System.out.println();
         
-        //mark += test_add_in_order();
+        mark += test_add_in_order();
         
         System.out.println("Current mark: " + mark);
         if(mark == 31)
@@ -347,7 +347,7 @@ public class LinkedListTest {
         string_list.addInOrder("ABB");
         string_list.addInOrder("BBB");
         
-        if(  string_list.getNode(0).data.equals("ABA") 
+        if( string_list.getNode(0).data.equals("ABA") 
            &&string_list.getNode(1).data.equals("ABB") 
            &&string_list.getNode(2).data.equals("ABC") 
            &&string_list.getNode(3).data.equals("BBB"))

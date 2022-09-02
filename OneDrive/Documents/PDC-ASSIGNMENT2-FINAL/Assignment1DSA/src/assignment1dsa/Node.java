@@ -4,22 +4,22 @@ package assignment1dsa;
  *
  * @author lukey
  */
-public class Node<E> {
+public class Node <E extends Comparable <E>>{
 
     public E data;
-    public Node next = null;
+    public Node next;
 
     public Node() {
+        this.next = null;
+        this.data = null;
     }
 
-    
-    
     public Node(E element) {
         this.data = element;
         next = null;
     }
 
-    public Node(E data, Node next) {
+    public Node (E data, Node next) {
 
         this.data = data;
         next = null;
@@ -34,27 +34,16 @@ public class Node<E> {
     }
 
     public void setData(E data) {
-        data = data;
+        this.data = data;
     }
 
-    public Node getNext() {
-        return next;
-    }
-
-    public void setNext(Node next) {
-        next = next;
-    }
-
-    public boolean equals(Node next) {
-        return (this.data.equals(next.data));
+    public boolean equals(Node node) {
+        return this.data == node.data;
     }
     
     
-    public int compareTo(Node node){
-    
-        String a = this.data.toString();
-        String b = node.data.toString();
-        return a.compareTo(b);
+ public int compareTo(Node node)
+    {
+        return this.data.compareTo((E)node.data);
     }
-
 }

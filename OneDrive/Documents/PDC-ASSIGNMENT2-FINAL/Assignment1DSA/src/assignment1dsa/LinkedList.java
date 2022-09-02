@@ -10,10 +10,11 @@ public class LinkedList<E> {
 //refers to the first node 
 
     public int size;
-    private Node<E> head;
-    private Node <E> tail;
+    public Node head;
+    public Node tail;
 //adds data at the end.
-    public LinkedList() {
+    
+    public LinkedList(){
     head = null;
     size =0;
     tail = null;
@@ -21,12 +22,13 @@ public class LinkedList<E> {
     
 //adding a value into the linked list. 
     public void add(E data) {
-        Node<E> newNode = new Node(data);
+        Node newNode = new Node((Comparable) data);
+        
         if (head == null) {
             head = newNode;
             //setting the temporary node to the head;
         } else {
-            Node<E> currentNode = head;
+            Node currentNode = head;
             while (currentNode.next != null) {
                 currentNode = currentNode.next;
             }
@@ -39,33 +41,32 @@ public class LinkedList<E> {
         return size;
     }
 
-    public void addInOrder(E data) {
-        //add files in oder
-        Node<E> newNode = new Node(data);
-        if (head == null) {
-            head = newNode;
-        } else if (head.compareTo(newNode) > 0) {
-            newNode.next = head;
-            head = newNode;
-        } else {
-            Node<E> current = head;
-            Node<E> temp = null;
-            while (current != null) {
-                if (current.compareTo(newNode) > 0) {
-                    break;
-                }
-                temp = current;
+   public void addInOrder(E data)
+    {
+        Node newNode = new Node();
+        newNode.setData((Comparable) data);
+        
+        if((this.head == null) || (newNode.compareTo(this.head) <= 0))
+        {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        else
+        {
+            Node current = this.head;
+            
+            while((current.next != null) && (newNode.compareTo(current.next) >= 0))
+            {
                 current = current.next;
             }
-            temp.next = newNode;
-            newNode.next = current;
+            newNode.next = current.next;
+            current.next = newNode;
         }
-        size++;
-
+        this.size++;
     }
 
     public boolean contains(Node node) {
-        Node<E> current = head;
+        Node current = head;
         boolean found = false;
 
         while (current != null && !found) {
@@ -89,7 +90,7 @@ public class LinkedList<E> {
             head = head.next;
             size--;
         } else {
-            Node<E> current = head;
+            Node current = head;
             while (current.next != null) {
                 if (current.next.data.equals(node.data)) {
                     current.next = current.next.next;
@@ -117,7 +118,7 @@ public class LinkedList<E> {
         if (head == null || head.next == null) {
             return;
         } else {
-            Node<E> current = head;
+            Node current = head;
 
             //finds the second to last node.
             while (current.next.next != null) {
@@ -145,22 +146,19 @@ public class LinkedList<E> {
         System.out.println("");
     }
 
-        public E getNode(int n)throws NoSuchElementException{
-        Node <E> current = null;
-        
-        if(n < 0 || n >= size ){
-        throw new NoSuchElementException("index out of bounds");
+    
+    public Node getNode(int i) {
+        Node current = null;
+        if (i < this.size && i >= 0) {
+            current = this.head;
+            for (int j = 0; j < this.size; j++) {
+                if (i == j) {
+                    return current;
+                }
+                current = current.next;
+            }
         }
-        else if (n > size/2){
-            
-          current = tail;
-          for(int i = 0 ; i < n; i++){
-          
-          
-          }
-        }
-        return current.data;
-        
-        }
+        return current;
+    }
     }
 

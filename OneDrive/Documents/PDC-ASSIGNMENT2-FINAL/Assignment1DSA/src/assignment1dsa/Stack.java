@@ -13,14 +13,14 @@ import java.util.NoSuchElementException;
 public class Stack<E> extends LinkedList<E> {
 
     int size;
-    Node<E> head;
+    Node head;
 
     public Stack(){
     }
 
 //adds an element to the top of the stack.
     public void push(E data) {
-        Node<E> newNode = new Node(data);
+        Node newNode = new Node((Comparable) data);
         newNode.next = head;
         head = newNode;
         size++;
@@ -31,7 +31,7 @@ public class Stack<E> extends LinkedList<E> {
 
         if (head != null) {
 //set the top of the stack to the head of the list. 
-            E stackTop = head.data;
+            E stackTop = (E) head.data;
             head = head.next;
             size--;
             return stackTop;

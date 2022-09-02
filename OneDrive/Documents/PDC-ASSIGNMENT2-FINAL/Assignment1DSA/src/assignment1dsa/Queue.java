@@ -7,12 +7,10 @@ import java.util.NoSuchElementException;
  * @author LukeTeua
  * @param <E>
  */
-public class Queue<E> extends LinkedList<E> {
+public class Queue <E> extends LinkedList{
 
-    int size = 0;
-    Node<E> head = null;
-    Node<E> tail = null;
-
+   
+    
     public Queue (){}
 
     @Override
@@ -21,7 +19,7 @@ public class Queue<E> extends LinkedList<E> {
     }
 
     public void enqueue(E data) {
-        Node<E> newNode = new Node(data);
+        Node newNode = new Node((Comparable) data);
 //checks to see if the tail is null. 
         if (tail == null) {
             head = newNode;
@@ -36,7 +34,7 @@ public class Queue<E> extends LinkedList<E> {
     public E dequeue() throws NoSuchElementException {
         //returns a node from the queue.
         if (head != null) {
-            E headElement = head.data;
+            E headElement = (E) head.data;
             head = head.next;
             size--;
             if (size == 0) {
